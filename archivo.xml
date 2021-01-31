@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cotizacion SYSTEM "archivo.dtd">
+<cotizacion folio="1" fecha="18/01/2021">
+    <datos-cliente>
+        <nombre>Maribel</nombre>
+        <paterno>Barrera</paterno>
+        <materno>Tabares</materno>
+        <email>maribel@gmail.com</email>
+        <telefono>5523556355</telefono>
+        <direccion>
+            <calle>San Marcos</calle>
+            <colonia>Ticoman</colonia>
+            <municipio ciudad="Guanaguato">
+                Guanaguato
+            </municipio>
+            <pais></pais>
+        </direccion>
+    </datos-cliente>
+
+    <detalle-cotizacion importe="800">  
+        <producto clave="P001" marca="MEXIMEX">
+            <nombreProducto>Loseta Piso Marmol</nombreProducto>
+            <precio>100.00</precio>
+            <cantidad>5</cantidad>
+            <iva>16</iva>
+            <importe>580</importe>
+        </producto>
+
+         <producto clave="S001" marca="N/A">
+            <nombreProducto>Serivicio Instalación</nombreProducto>
+            <precio>220</precio>
+            <cantidad>1</cantidad>
+            <iva>0</iva>
+            <importe>220</importe>
+        </producto>
+    </detalle-cotizacion>    
+</cotizacion>

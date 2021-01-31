@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cotizacion [
+    
+    <!ELEMENT cotizacion(datos-cliente, detalle-cotizacion)>
+        <!ATTLIST cotizacion folio CDATA #REQUIRED>
+        <!ATTLIST cotizacion fecha CDATA #REQUIRED>
+
+    <!ELEMENT datos-cliente (nombre, paterno, materno, email, telefono, direccion)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT paterno (#PCDATA)>
+    <!ELEMENT materno (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+    <!ELEMENT telefono (#PCDATA)>
+
+    <!ELEMENT direccion (calle, colonia, municipio, pais)) >
+    <!ELEMENT calle (#PCDATA)>
+    <!ELEMENT colonia (#PCDATA)>
+    <!ELEMENT municipio (#PCDATA)> 
+        <!ATTLIST municipio ciudad (#PCDATA)> 
+    <!ELEMENT pais #IMPLIED> 
+
+    <!ELEMENT detalle-cotizacion (producto+)>
+        <!ATTLIST detalle-cotizacion importe CDATA #REQUIRED>
+
+    <!ELEMENT producto (nombreProducto, marca, precio, iva) >
+        <!ATTLIST producto clave NMTOKEN #REQUIRED>
+        <!ATTLIST producto marca IDREF #REQUIRED>
+    <!ELEMENT nombreProducto CDATA #REQUIRED>
+    <!ELEMENT precio CDATA #REQUIRED> 
+    <!ELEMENT cantidad CDATA #REQUIRED>
+    <!ELEMENT importe CDATA #REQUIRED>        
+    <!ELEMENT iva (#PCDATA)>
+
+    <!ELEMENT marca (id_marca, clave_marca, nombreMarca)>
+    <!ELEMENT id_marca ID #REQUIRED>
+    <!ELEMENT clave_marca NMTOKEN #REQUIRED>
+    <!ELEMENT nombreMarca (#PCDATA)>
+
+]>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    version="0.1" xml:lang="es">
+
+    <xs:element name="cotizacion">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="header" type="datos-cliente"
+                    minOccurs="1" maxOccurs="2" />
+                <xs:element name="detail" type="detalle-cotizacion"
+                    minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+        <xs:attribute name="folio" type="xs:integer" use="required"/>
+        <xs:attribute name="fecha" type="xs:date" use="required"/>
+    </xs:element>
+
+    <xs:complexType name="datos-cliente">
+        <sequence>
+            <xs:element name="nombre" type="xs:string" minOccur="1" maxOccurs="50" />                
+            <xs:element name="paterno" type="xs:string" minOccur="1" maxOccurs="50"/>
+            <xs:element name="materno" type="xs:string" minOccur="1" maxOccurs="50"/>
+            <xs:element name="email" type="xs:string" minOccur="1" maxOccurs="50">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="telefono" minOccur="1" maxOccurs="10">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:pattern value="[0-9]{10}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element ref="direccion" /> <!-- aqui un complex element -->
+        </sequence>
+    </xs:complexType>
+
+    <xs:element name="direccion">
+        <xs:complexType>
+            <sequence>
+                <xs:element name="calle" type="xs:string" minOccur="1" maxOccurs="50" />                
+                <xs:element name="colonia" type="xs:string" minOccur="1" maxOccurs="50"/>                              
+                <xs:element name="municipio" type="xs:string" minOccur="1" maxOccurs="50" />              
+                <xs:element name="ciudad" type="xs:string" minOccur="1" maxOccurs="50" />              
+                <xs:element name="pais" type="xs:string" minOccur="1" maxOccurs="50" use="optional"  />
+            </sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="detalle-cotizacion">
+        <sequence>
+            <xs:element name="producto" use="required">
+                <xs:complexType>
+                    <sequence>
+                        <xs:element name="nombreProducto" type="xs:string" minOccur="1" />                
+                        <xs:element ref="marca" />  <!-- aqui un complex element -->                           
+                        <xs:element name="precio" type="xs:decimal" minOccur="1" use="required" />           
+                            <xs:restriction base="xs:nonNegativeInteger">
+                                <xs:minExclusive value="0" />
+                            </xs:restriction>
+                        </xs:element>
+                        <xs:element name="cantidad" type="xs:decimal" minOccur="1" use="required" />
+                            <xs:restriction base="xs:nonNegativeInteger">
+                                <xs:minExclusive value="0" />
+                            </xs:restriction>
+                        </xs:element>
+                        <xs:element name="iva" type="xs:decimal" default="0.0" />   
+                        <xs:element name="importe" type="xs:decimal" minOccur="1" use="required" />
+                    </sequence>
+                </xs:complexType>
+            </xs:element>
+        </sequence>
+    </xs:complexType>
+
+
+    <xs:element name="marca">
+        <xs:complexType>
+            <sequence>
+                <xs:element name="id_marca" type="xs:ID" use="required" />                
+                <xs:element name="clave_marca" type="xs:string" minOccur="1" use="required"/>                              
+                <xs:element name="nombreMarca" type="xs:string" minOccur="1" />
+            </sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
+ 
